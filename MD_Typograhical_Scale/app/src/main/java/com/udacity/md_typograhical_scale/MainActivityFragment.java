@@ -39,6 +39,7 @@ public class MainActivityFragment extends Fragment {
     TextView headlineView;
 
     Typeface courgette;
+    Typeface rubik;
 
 
     public MainActivityFragment() {
@@ -54,8 +55,9 @@ public class MainActivityFragment extends Fragment {
         headlineView = (TextView)getActivity().findViewById(R.id.headline);
          */
 
-        display4View.setTypeface(courgette);
+//        display4View.setTypeface(courgette);
         headlineView.setTypeface(courgette);
+        display4View.setTypeface(rubik);
         return view;
     }
 
@@ -63,5 +65,6 @@ public class MainActivityFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         courgette = Typeface.createFromAsset(getActivity().getAssets(), "Courgette-Regular.ttf");
+        rubik = Typeface.createFromAsset(getActivity().getAssets(), "Rubik-Regular.ttf");
     }
 }
