@@ -22,9 +22,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.BindDimen;
 import butterknife.BindInt;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -35,8 +35,8 @@ public class MainActivity extends Activity {
 
     private static final int PHOTO_COUNT = 12;
 
-    @Bind(R.id.image_grid) RecyclerView grid;
-    @Bind(android.R.id.empty) ProgressBar empty;
+    @BindView(R.id.image_grid) RecyclerView grid;
+    @BindView(android.R.id.empty) ProgressBar empty;
     @BindInt(R.integer.photo_grid_columns) int columns;
     @BindDimen(R.dimen.grid_item_spacing) int gridSpacing;
     private PhotoAdapter adapter;
@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 
     /* protected */ static class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.photo) ForegroundImageView imageView;
+        @BindView(R.id.photo) ForegroundImageView imageView;
 
         public PhotoViewHolder(View itemView) {
             super(itemView);
@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
         public void onBindViewHolder(final PhotoViewHolder holder, final int position) {
             final Photo photo = photos.get(position);
             String url = photoUrlBase + photo.id;
-            Picasso.with(MainActivity.this)
+            Picasso.get()
                     .load(url)
                     .placeholder(R.color.placeholder)
                     .into(holder.imageView);

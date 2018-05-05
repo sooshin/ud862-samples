@@ -13,17 +13,17 @@ import android.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 
-import butterknife.Bind;
 import butterknife.BindInt;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailActivity extends Activity {
 
     public static final String EXTRA_AUTHOR = "EXTRA_AUTHOR";
 
-    @Bind(R.id.toolbar)Toolbar toolbar;
-    @Bind(R.id.photo) ImageView imageView;
-    @Bind(R.id.author) TextView author;
+    @BindView(R.id.toolbar)Toolbar toolbar;
+    @BindView(R.id.photo) ImageView imageView;
+    @BindView(R.id.author) TextView author;
     @BindInt(R.integer.detail_desc_slide_duration) int slideDuration;
 
     @Override
@@ -32,7 +32,7 @@ public class DetailActivity extends Activity {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
-        Picasso.with(this)
+        Picasso.get()
                 .load(getIntent().getData())
                 .placeholder(R.color.placeholder)
                 .into(imageView);
